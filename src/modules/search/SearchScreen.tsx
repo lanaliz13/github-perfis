@@ -45,6 +45,7 @@ export default function SearchScreen({ onSelect }: Props) {
           placeholder="Digite um usuário"
           placeholderTextColor={colors.placeholder}
           value={query}
+          onChangeText={setQuery}
           autoCapitalize="none"
           autoCorrect={false}
           returnKeyType="search"
@@ -78,7 +79,8 @@ export default function SearchScreen({ onSelect }: Props) {
           data={results}
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (
-            <UserCard user={item} onPress={onSelect(item.login)} />
+            //Questão 3
+            <UserCard user={item} onPress={() => onSelect(item.login)} />
           )}
           contentContainerStyle={styles.list}
           keyboardShouldPersistTaps="handled"

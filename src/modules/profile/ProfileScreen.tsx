@@ -123,12 +123,16 @@ export default function ProfileScreen({ login, onBack }: Props) {
             {/* TODO Questão 10 */}
 
             <Text style={styles.section}>Repositórios</Text>
-            {repos.length && (
+            //Questão 6
+            {repos.length > 0 ? (
               <Text style={styles.muted}>
                 {repos.length} repositório(s), do mais estrelado ao menos
-                estrelado
-              </Text>
+                 estrelado
+               </Text>
+            ) : (
+              <Text style={styles.muted}>Nenhum repositório público.</Text>
             )}
+              
           </View>
         }
       />

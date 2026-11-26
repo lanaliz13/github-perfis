@@ -15,23 +15,25 @@ export function useProfileViewModel(login: string) {
   async function load() {
     console.log("Carregando perfil de", login);
     setLoading(true);
-    setError(null);
+    setError(null); 
     try {
-      const [userData, reposData] = await Promise.all([
+      const [userData, reposData] = await Promise.all([ 
         fetchProfile(login),
         fetchRepositories(login),
       ]);
       setUser(userData);
       setRepos(reposData);
-      setLoading(false);
     } catch (e) {
       setError((e as Error).message);
+    } finally { //5 
+      setLoading(false);
     }
   }
 
+  
   useEffect(() => {
     load();
-  });
+   }, [login]); //Questão 4
 
   return { user, repos, loading, error };
 }
